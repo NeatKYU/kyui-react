@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# kyUI for React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+리액트를 위한 UI 컴포넌트 라이브러리입니다.
+headless 디자인을 목표로 하고있으면 점진적으로 컴포넌트를 추가해나갈 예정입니다.
 
-Currently, two official plugins are available:
+### 설치방법
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+// npm
+npm install kyui-react
 
-## Expanding the ESLint configuration
+// yarn
+yarn add kyui-react
+```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 사용방법
 
-- Configure the top-level `parserOptions` property like this:
+```
+import { Button } from 'kyui-react'
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+const myComponent = () => {
+  <div>
+    <Button>button</Button>
+  </div>
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 다음버전 TODO
+
+-   [ ] 버튼 디자인 고도화
+-   [ ] input 컴포넌트 추가
