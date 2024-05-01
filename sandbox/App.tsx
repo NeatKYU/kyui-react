@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from '../lib/index';
+// import '../lib/index.css';
 
 export default function App() {
     return (
-        <div>
+        <div className="w-full min-h-[100vh] p-5">
             <Button
-                size="sm"
                 onClick={() => {
                     console.log('hi');
                 }}
