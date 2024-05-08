@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../lib/index';
+import { Button, Input } from '../lib/index';
 // import '../lib/index.css';
 
 export default function App() {
@@ -12,6 +12,9 @@ export default function App() {
             >
                 button
             </Button>
+            <div className="h-10" />
+            <Input type="text" />
+            <Input type="file" />
         </div>
     );
 }
