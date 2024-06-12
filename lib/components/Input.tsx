@@ -12,7 +12,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     const { type, className, ...rest } = props
     return (
         <input
-            aria-label="file"
             ref={ref}
             type={type}
             className={clsx(type === 'file' ? FileStyles : InputStyles, className)}
