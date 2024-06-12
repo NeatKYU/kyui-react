@@ -2,7 +2,7 @@ import React from 'react'
 import { cva } from 'class-variance-authority'
 import { twClsx } from '@/utils/index'
 
-const ButtonClasses = cva('bg-white border border-gray-200 hover:bg-gray-50 flex', {
+const ButtonClasses = cva('bg-white border border-gray-200 hover:bg-gray-50', {
     variants: {
         size: {
             sm: 'h-8 min-w-12 px-2 py-1',
