@@ -15,14 +15,14 @@ const AvatorClasses = cva('bg-gray-200 flex rounded-full overflow-hidden', {
     },
 })
 
-interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AvatorProps extends React.HTMLAttributes<HTMLDivElement> {
     // children: React.ReactNode
     size?: 'sm' | 'md' | 'lg'
     src?: string
     alt?: string
 }
 
-const Avator = React.forwardRef<HTMLDivElement, DivProps>((props, ref) => {
+const Avator = React.forwardRef<HTMLDivElement, AvatorProps>((props, ref) => {
     const { size, src, alt, className, ...rest } = props
     return (
         <div ref={ref} className={twClsx(AvatorClasses({ className, size }))} {...rest}>
