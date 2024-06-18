@@ -93,7 +93,7 @@ interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ContentClasses = cva(
-    'flex-col absolute bg-white border border-gray-200 left-0 top-full translate-y-1.5 -translate-x-[1px] p-1 taransition-all overflow-hidden z-10'
+    'flex-col absolute bg-white border border-gray-200 left-0 top-full translate-y-2 -translate-x-1 p-1 taransition-all overflow-hidden z-10'
 )
 
 const Content = (props: ContentProps) => {
