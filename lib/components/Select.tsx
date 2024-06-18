@@ -56,6 +56,7 @@ const SelectComponent = React.forwardRef<HTMLButtonElement, SelectProps>((props,
         <SelectContext.Provider value={{ isOpen, setIsOpen, selectValue, setSelectValue, onChange }}>
             <button
                 ref={ref}
+                tabIndex={0}
                 className={twClsx(SelectClasses({ className, size }))}
                 onBlur={() => setIsOpen(false)}
                 {...rest}
