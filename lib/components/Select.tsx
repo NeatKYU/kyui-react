@@ -23,7 +23,7 @@ type SelectContextType = {
 }
 
 const SelectClasses = cva(
-    'bg-white border border-gray-200 relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-700 transition-all',
+    'bg-white border border-gray-200 relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-700 transition-all',
     {
         variants: {
             size: {
