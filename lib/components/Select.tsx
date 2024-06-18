@@ -1,8 +1,18 @@
 import React from 'react'
 import { cva } from 'class-variance-authority'
 import { twClsx } from '@/utils/index'
-import clsx from 'clsx'
 import Down from '@/public/down.svg?react'
+
+/**
+ * Select component
+ * <Select>
+ *  <Trigger/>
+ *  <Content>
+ *      <Item/>
+ *  </Content>
+ * </Select>
+ *
+ */
 
 type SelectContextType = {
     isOpen: boolean
@@ -52,12 +62,13 @@ const SelectComponent = React.forwardRef<HTMLButtonElement, SelectProps>((props,
 })
 
 interface TriggerProps extends React.HTMLAttributes<HTMLDivElement> {
-    // children: React.ReactNode
     placeholder: string
 }
 
+const TriggerClasses = cva('flex items-center h-full box-border px-3 py-1 justify-between')
+
 const Trigger = (props: TriggerProps) => {
-    const { placeholder, ...rest } = props
+    const { placeholder, className, ...rest } = props
     const { setIsOpen, selectValue } = React.useContext(SelectContext) as SelectContextType
 
     const handleOpen = () => {
@@ -65,9 +76,27 @@ const Trigger = (props: TriggerProps) => {
     }
 
     return (
-        <div className="flex items-center h-full box-border px-3 py-1 justify-between" onClick={handleOpen} {...rest}>
+        <div className={twClsx(TriggerClasses({ className }))} onClick={handleOpen} {...rest}>
             <div className="trigger truncate">{selectValue ? selectValue : placeholder}</div>
             <Down className="w-3 flex-shrink-0" />
+        </div>
+    )
+}
+
+interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
+}
+
+const ContentClasses = cva(
+    'flex-col absolute bg-white border border-gray-200 left-0 top-full translate-y-1.5 -translate-x-[1px] p-1 taransition-all overflow-hidden z-10'
+)
+
+const Content = (props: ContentProps) => {
+    const { children, className, ...rest } = props
+    const { isOpen } = React.useContext(SelectContext) as SelectContextType
+    return (
+        <div className={twClsx({ hidden: !isOpen, flex: isOpen }, ContentClasses({ className }))} {...rest}>
+            {children}
         </div>
     )
 }
@@ -77,10 +106,10 @@ interface ItemProps extends React.HTMLAttributes<HTMLDivElement> {
     value: string | number
 }
 
-const ItemClasses = 'hover:bg-gray-200 cursor-pointer px-2 py-1 text-start'
+const ItemClasses = cva('hover:bg-gray-200 cursor-pointer px-2 py-1 text-start truncate')
 
 const Item = (props: ItemProps) => {
-    const { children, value, ...rest } = props
+    const { children, className, value, ...rest } = props
     const { setSelectValue, setIsOpen, onChange } = React.useContext(SelectContext) as SelectContextType
 
     const handleSelectValue = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -95,29 +124,12 @@ const Item = (props: ItemProps) => {
         }
     }
     return (
-        <div className={clsx(ItemClasses)} onClick={handleSelectValue} {...rest}>
+        <div className={twClsx(ItemClasses({ className }))} onClick={handleSelectValue} {...rest}>
             {children}
         </div>
     )
 }
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
-    children: React.ReactNode
-}
-
-const ContentClasses = 'flex-col absolute bg-white border border-gray-200 left-0 top-full translate-y-1 p-1'
-
-const Content = (props: ContentProps) => {
-    const { children, ...rest } = props
-    const { isOpen } = React.useContext(SelectContext) as SelectContextType
-    return (
-        <div className={clsx(ContentClasses, { hidden: !isOpen, flex: isOpen })} {...rest}>
-            {children}
-        </div>
-    )
-}
-
-// SelectComponent.Trigger = Trigger
 const Select = Object.assign(SelectComponent, { Trigger, Item, Content })
 
 export { Select }
