@@ -13,7 +13,8 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "typeRoots": ["./dist/index.d.ts"],
+        "typeRoots": ["./dist/index.d.ts", "./node_modules/@types"],
+        "esModuleInterop": true,
 
         /* Linting */
         "strict": true,
@@ -29,6 +30,6 @@
             "@/public/*": ["public/*"]
         }
     },
-    "include": ["lib"],
+    "include": ["lib", "__test__", "utils"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
