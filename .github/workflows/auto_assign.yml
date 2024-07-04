@@ -22,5 +22,6 @@ jobs:
                   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
                   SLACK_MASSAGE: '리뷰어로 할당되었습니다. :pray: |
                   PR 번호: #${{ github.event.pull_request.title }} |
+                  담당자: ${{ github.event.pull_request.user.login }} |
                   리뷰어: @${{ steps.auto-assign.outputs.assigned_reviewers }} |
                   리뷰 URL: ${{ github.event.pull_request.html_url }}'
