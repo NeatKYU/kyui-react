@@ -8,17 +8,17 @@ jobs:
   add-reviews:
     runs-on: ubuntu-latest
     steps:
-	  - name: Auto assign reviewer
-	    id: auto-assign
-        uses: kentaro-m/auto-assign-action@v2.0.0
-        with:
-          configuration-path: '.github/assign_config.yml' 
-          # Only needed if you use something other than .github/auto_assign.yml
-          
-	  - name: Send Slack Notification 
-	    uses: rtCamp/action-slack-notify@v2 
-		env: 
-		  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
-	    with: 
-	      message: > 
-	        Pull request #${{ github.event.pull_request.number }} has been assigned to @${{ steps.auto-assign.outputs.assigned_reviewers }}.
+      - name: Auto assign reviewer
+        id: auto-assign
+          uses: kentaro-m/auto-assign-action@v2.0.0
+          with:
+            configuration-path: '.github/assign_config.yml' 
+            # Only needed if you use something other than .github/auto_assign.yml
+            
+      - name: Send Slack Notification 
+        uses: rtCamp/action-slack-notify@v2 
+        env: 
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
+        with: 
+          message: > 
+            Pull request #${{ github.event.pull_request.number }} has been assigned to @${{ steps.auto-assign.outputs.assigned_reviewers }}.
